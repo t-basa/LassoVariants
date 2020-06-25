@@ -36,7 +36,7 @@ class SupportedLasso(object):
         if self.modeltype_ == 'regression':
             self.lasso_ = Lasso(max_iter=self.maxitr_, tol=self.tol_, alpha=self.rho_)
         elif self.modeltype_ == 'classification':
-            self.lasso_ = LogisticRegression(max_iter=self.maxitr_, tol=self.tol_, C=1/self.rho_, penalty='l1')
+            self.lasso_ = LogisticRegression(max_iter=self.maxitr_, tol=self.tol_, C=1/self.rho_, penalty='l1', solver = 'liblinear')
     
     def fit(self, x, y, supp, warm_start=False, a=[], b=[]):
         self.dim_ = x.shape[1]
